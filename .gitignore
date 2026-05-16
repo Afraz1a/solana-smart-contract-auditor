@@ -1,0 +1,12 @@
+"ml/models/" 
+"__pycache__/" 
+"*.pkl" 
+"feedback.json" 
+"*.pyc" 
+node_modules/ 
+frontend/node_modules/ 
+ml/models/ 
+__pycache__/ 
+*.pkl 
+*.pyc 
+feedback.json 

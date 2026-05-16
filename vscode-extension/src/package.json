@@ -1,0 +1,46 @@
+{
+  "name": "solana-auditor",
+  "displayName": "Solana Auditor",
+  "description": "Real-time vulnerability scanner for Solana/Anchor smart contracts",
+  "version": "1.0.0",
+  "engines": { "vscode": "^1.80.0" },
+  "categories": ["Linters", "Other"],
+  "activationEvents": ["onLanguage:rust"],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "solanaAuditor.scanNow",
+        "title": "Solana Auditor: Scan This File Now"
+      },
+      {
+        "command": "solanaAuditor.showReport",
+        "title": "Solana Auditor: Show Last Report"
+      }
+    ],
+    "configuration": {
+      "title": "Solana Auditor",
+      "properties": {
+        "solanaAuditor.apiUrl": {
+          "type": "string",
+          "default": "http://localhost:5000",
+          "description": "URL of the Solana Auditor API server"
+        },
+        "solanaAuditor.scanOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically scan when you save a .rs file"
+        },
+        "solanaAuditor.scanOnType": {
+          "type": "boolean",
+          "default": false,
+          "description": "Scan while typing (slower, uses debounce)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "node src/extension.js"
+  },
+  "devDependencies": {}
+}
