@@ -8,7 +8,12 @@ from flask import Flask, request, jsonify, render_template_string
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ml.scanner import get_scanner
-from ml.onchain import store_audit_record
+
+try:
+    from ml.onchain import store_audit_record
+except ImportError:
+    store_audit_record = None
+    print("Warning: ml.onchain not found — on-chain audit storage disabled.")
 
 app     = Flask(__name__)
 scanner = get_scanner()
@@ -772,8 +777,13 @@ def scan():
         "scanned_at":   datetime.now(timezone.utc).isoformat(),
         **result,
     }
-    # Store on Solana blockchain
-    onchain = store_audit_record({**record, "scan_id": scan_id})
+    # Store on Solana blockchain (optional — skipped if ml.onchain not available)
+    onchain = None
+    if store_audit_record is not None:
+        try:
+            onchain = store_audit_record({**record, "scan_id": scan_id})
+        except Exception as e:
+            print(f"Warning: on-chain storage failed: {e}")
     record["onchain"] = onchain
 
     SCANS[scan_id] = record
