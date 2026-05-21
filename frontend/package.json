@@ -1,19 +1,18 @@
 {
-  "name": "frontend",
+  "name": "solana-auditor-frontend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev":   "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
+    "react":     "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
     "@vitejs/plugin-react": "^6.0.2",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
     "vite": "^8.0.13"
   }
 }
