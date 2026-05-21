@@ -10,7 +10,7 @@ An open-source security tool that automatically scans Solana smart contracts for
 Start the app locally and open http://localhost:5000
 
 ```bash
-git clone https://github.com/yourusername/solana-auditor
+git clone https://github.com/Afraz1a/solana-auditor
 cd solana-auditor
 pip install -r requirements.txt
 python app.py
